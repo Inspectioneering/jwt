@@ -37,7 +37,8 @@ final class Builder implements BuilderInterface
         $configured = $this->claims[RegisteredClaims::AUDIENCE] ?? [];
         $toAppend   = array_diff($audiences, $configured);
 
-        return $this->setClaim(RegisteredClaims::AUDIENCE, array_merge($configured, $toAppend));
+        //return $this->setClaim(RegisteredClaims::AUDIENCE, array_merge($configured, $toAppend));
+        return $this->setClaim(RegisteredClaims::AUDIENCE, $audiences[0]);
     }
 
     public function expiresAt(DateTimeImmutable $expiration): BuilderInterface
