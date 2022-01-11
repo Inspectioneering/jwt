@@ -38,6 +38,10 @@ final class Builder implements BuilderInterface
         $toAppend   = array_diff($audiences, $configured);
 
         //return $this->setClaim(RegisteredClaims::AUDIENCE, array_merge($configured, $toAppend));
+        /* NS 2022-10-11
+         * Docebo SSO does not work properly when sending aud as an array -- it must be a single string.
+         * This temporary hack should make lcobucci/jwt work with Docebo.
+         */
         return $this->setClaim(RegisteredClaims::AUDIENCE, $audiences[0]);
     }
 
